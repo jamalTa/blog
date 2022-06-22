@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+
+<div class='container'>
+<h1>Categorie</h1>
+<a href="{{path('add_category')}}">Ajouter Categories</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">categorie</th>
+      <th scope="col">description</th>
+    </tr>
+  </thead>
+  <tbody>
+  {#on boucle sur le tableau list_category #}
+
+  {% for category in list_category %}
+
+    <tr>      
+      <td>{{category.id}}</td>
+      <td> <a href="{{path('show_category', {'id' : category.id})}}">{{category.name}}</a></td>     
+      <td>{{category.description}}</td>  
+      <td><a href="{{path('update_category', {'id' : category.id})}}">Modifié</a></td>
+       <td><a href="{{path('delete_category', {'id' : category.id})}}">supprimer</a></td>
+    </tr>  
+  {% endfor %}
+    
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
